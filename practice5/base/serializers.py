@@ -17,7 +17,7 @@ class StudentSerializer(serializers.ModelSerializer):
         # read_only_fields= ['name']
 
         ## another way to declare read_only function on fields
-        extra_kwargs= {'name':{'read_only':True}}
+        # extra_kwargs= {'name':{'read_only':True}}
 
 ## It has by default create and update methods
         
