@@ -2,7 +2,6 @@ from rest_framework import serializers
 from .models import student
 
 ## Validator
-
 def start_with_h(value):
     if value[0].lower() != 'h':
         raise serializers.ValidationError('Name should be start with H')
