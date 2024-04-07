@@ -32,8 +32,8 @@ from .serializers import *
 def studentapi(request, pk= None):
     if request.method == "GET":
         # id= request.GET.get('id')
-        id=pk
-        if id is not None:
+        # id=pk
+        if pk is not None:
             stu = Student.objects.get(id=pk)
             serializer= StudentSerializer(stu)
             return Response(serializer.data)
