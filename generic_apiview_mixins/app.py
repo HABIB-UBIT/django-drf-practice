@@ -34,9 +34,9 @@ def get_data(id=None):
 
 def post_data():
     data={
-        'name': 'Tariq',
-        'roll': 104,
-        'city': 'karachi'
+        'name': 'Shahyan',
+        'roll': 105,
+        'city': 'peshawar'
     }
     headers={'content-Type':'application/json'}
     json_data= json.dumps(data)
@@ -44,7 +44,7 @@ def post_data():
     data= r.json()
     print(data)
 
-# post_data()
+post_data()
 
 def update_data():
     data={
@@ -70,4 +70,4 @@ def delete_data():
     data= r.json()
     print(data)
 
-delete_data()
+# delete_data()
