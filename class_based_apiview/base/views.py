@@ -8,8 +8,8 @@ from .serializers import *
 ## CRUD function
 class studentapi(APIView):
     def get(self, request, format= None, pk= None):
-        id=pk
-        if id is not None:
+        # id=pk
+        if pk is not None:
             stu = Student.objects.get(id=pk)
             serializer= StudentSerializer(stu)
             return Response(serializer.data)
