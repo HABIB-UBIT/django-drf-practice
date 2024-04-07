@@ -15,7 +15,18 @@ from django.urls import path, include
 
 ######## COMBINED #########
 
+# urlpatterns = [
+#     path('studentapi/', views.ListCreateStudent.as_view(), name= ""),
+#     path('studentapiru/<int:pk>', views.RetrieveUpdateStudent.as_view(), name= "retrieve-update"),
+#     path('studentapird/<int:pk>', views.RetrievedestroyStudent.as_view(), name= "retrieve-destroy"),
+#     path('studentapirud/<int:pk>', views.RetrieveupdatedestroyStudent.as_view(), name= "retrieve-update-destroy"),
+
+# ]
+
+
+######## Most Important and Easy to make CRUD function #########
+
 urlpatterns = [
-    path('studentapi/', views.studentlistandcreate.as_view(), name= ""),
-    path('studentapi/<int:pk>', views.updatedeleteretrievestudent.as_view(), name= ""),
+    path('studentapi/', views.ListCreateStudent.as_view(), name= ""),
+    path('studentapi/<int:pk>', views.RetrieveUpdateDestroyStudent.as_view(), name= "retrieve-update-destroy")
 ]

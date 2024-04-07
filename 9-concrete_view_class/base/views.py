@@ -1,72 +1,57 @@
 from django.shortcuts import render
-from rest_framework.generics import GenericAPIView
-from rest_framework.mixins import ListModelMixin, CreateModelMixin, UpdateModelMixin, DestroyModelMixin, RetrieveModelMixin
+from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView, ListCreateAPIView, RetrieveUpdateAPIView, RetrieveDestroyAPIView, RetrieveUpdateDestroyAPIView
 from .models import *
 from .serializers import *
 
 # Create your views here.
-## CRUD function using Generic APIView and Mixins
+## CRUD function using Concrete View Class
 
 ######## SEPERATELY #########
 
-# class studentlist(GenericAPIView,ListModelMixin):
+# class studentlist(ListAPIView):
 #     queryset= Student.objects.all()
 #     serializer_class= StudentSerializer
-#     def get(self, request, *args, **kwargs):
-#         return self.list(request, *args, **kwargs)
 
-# class studentcreate(GenericAPIView,CreateModelMixin):
+# class studentcreate(CreateAPIView):
 #     queryset= Student.objects.all()
 #     serializer_class= StudentSerializer
-#     def post(self, request, *args, **kwargs):
-#         return self.create(request, *args, **kwargs)
-    
-# class studentretrieve(GenericAPIView,RetrieveModelMixin):
+
+# class studentretrieve(RetrieveAPIView):
 #     queryset= Student.objects.all()
 #     serializer_class= StudentSerializer
-#     def get(self, request, *args, **kwargs):
-#         return self.retrieve(request, *args, **kwargs)
-    
-# class studentupdate(GenericAPIView,UpdateModelMixin):
+
+# class studentupdate(UpdateAPIView):
 #     queryset= Student.objects.all()
 #     serializer_class= StudentSerializer
-#     def put(self, request, *args, **kwargs):
-#         return self.update(request, *args, **kwargs)
-    
-# class studentdestroy(GenericAPIView,DestroyModelMixin):
+
+# class studentdestroy(DestroyAPIView):
 #     queryset= Student.objects.all()
 #     serializer_class= StudentSerializer
-#     def delete(self, request, *args, **kwargs):
-#         return self.destroy(request, *args, **kwargs)
-
-
-
-######## COMBINED #########
-
-class studentlistandcreate(GenericAPIView, ListModelMixin, CreateModelMixin):
-    queryset= Student.objects.all()
-    serializer_class= StudentSerializer
     
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-    
-class updatedeleteretrievestudent(GenericAPIView, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin):
+######## Combined #########
+
+# class ListCreateStudent(ListCreateAPIView):  ## Works finely for list and create
+#     queryset= Student.objects.all()
+#     serializer_class= StudentSerializer
+
+# class RetrieveUpdateStudent(RetrieveUpdateAPIView):  ## Works finely for retrieve and update
+#     queryset= Student.objects.all()
+#     serializer_class= StudentSerializer
+
+# class RetrievedestroyStudent(RetrieveDestroyAPIView):  ## Works finely for retrieve and destroy
+#     queryset= Student.objects.all()
+#     serializer_class= StudentSerializer
+
+# class RetrieveupdatedestroyStudent(RetrieveUpdateDestroyAPIView):  ## Works finely for retrieve, update and destroy
+#     queryset= Student.objects.all()
+#     serializer_class= StudentSerializer
+
+
+######## Most Important and Easy to make CRUD function #########
+class ListCreateStudent(ListCreateAPIView):  ## Works finely for list and create
     queryset= Student.objects.all()
     serializer_class= StudentSerializer
 
-    # retrieve
-    def get(self, request, *args, **kwargs):
-        return self.retrieve(request, *args, **kwargs)
-    # update
-    def put(self, request, *args, **kwargs):
-        return self.update(request, *args, **kwargs)
-    # destroy
-    def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)
-    
-
-    
-
-
+class RetrieveUpdateDestroyStudent(RetrieveUpdateDestroyAPIView):  ## Works finely for retrieve, update and destroy
+    queryset= Student.objects.all()
+    serializer_class= StudentSerializer
