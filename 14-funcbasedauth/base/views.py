@@ -31,7 +31,7 @@ from rest_framework.permissions import IsAuthenticated
 
 ## CRUD function
 @api_view(['GET','POST','PUT','DELETE'])
-@authentication_classes([BasicAuthentication])
+@authentication_classes([BasicAuthentication])    ### Can use any auth class and permission class
 @permission_classes([IsAuthenticated])
 def studentapi(request, pk= None):
     if request.method == "GET":
